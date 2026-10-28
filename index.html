@@ -7,9 +7,9 @@
     <meta name="color-scheme" content="dark">
     <title>IK BOOKMARK</title>
     
-    <!-- ★ 브라우저 탭에 표시될 아이콘(파비콘) 설정 추가 -->
+    <!-- 브라우저 탭에 표시될 아이콘(파비콘) 설정 -->
     <link rel="icon" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png"> <!-- 모바일 홈화면 추가 시 아이콘 -->
+    <link rel="apple-touch-icon" href="logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -31,20 +31,17 @@
             min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
-            /* 창 크기를 줄였을 때 잘리지 않고 상하 스크롤이 되도록 auto로 변경 */
             overflow-y: auto; 
-            -webkit-font-smoothing: antialiased; /* 텍스트 렌더링 고급화 */
-            padding: 40px 20px; /* 창을 줄였을 때 여백 확보 */
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 20px;
         }
 
         /* 메인 슬라이드 캔버스 */
         .slide-container {
-            /* 고정 크기 제거 및 반응형 너비 적용 */
             width: 100%;
             max-width: 1280px;
             min-height: 80vh;
             height: auto; 
-            /* 은은한 네이비 빛이 도는 다크 스페이스 배경 */
             background: linear-gradient(145deg, #111827 0%, #0f172a 50%, #1e1b4b 100%);
             display: flex;
             flex-direction: column;
@@ -80,14 +77,13 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* 중앙 테이블 영역 (배경을 투명하게 날려 미니멀리즘 강조) */
+        /* 중앙 테이블 영역 */
         .bookmark-grid {
             margin: 10px 15px 15px 15px; 
             display: flex;
             gap: 25px; 
             padding: 20px 30px;
             flex-grow: 1;
-            /* 창 분할 및 축소 시 유연하게 감싸기(wrap) 적용 */
             flex-wrap: wrap; 
         }
 
@@ -95,11 +91,9 @@
             display: flex;
             flex-direction: column;
             gap: 30px; 
-            /* 기본 3단 배열 */
             width: calc((100% - 50px) / 3);
         }
 
-        /* 카드 형식의 글래스모피즘 제거 -> 투명하고 미니멀하게 */
         .category-box {
             display: flex;
             flex-direction: column;
@@ -110,13 +104,14 @@
         }
 
         .cat-title {
-            color: #94a3b8; /* 세련된 실버 그레이 */
-            font-size: 14px; 
-            font-weight: 600; 
+            color: #94a3b8; 
+            font-size: 13px; 
+            font-weight: 700; 
             border-bottom: 1px solid rgba(148, 163, 184, 0.15); 
             padding-bottom: 6px;
             margin: 0;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
             flex-shrink: 0; 
         }
 
@@ -127,9 +122,8 @@
             align-content: flex-start;
         }
 
-        /* ★ 버튼 전용 글래스모피즘 (유리 질감) */
+        /* 버튼 기본 글래스모피즘 */
         .link-btn {
-            /* CSS 변수를 활용한 동적 컬러 시스템 (기본값 설정) */
             --btn-border: rgba(255, 255, 255, 0.07);
             --btn-glow: rgba(129, 140, 248, 0.5);
             --btn-glow-shadow: rgba(129, 140, 248, 0.25);
@@ -138,21 +132,15 @@
             align-items: center;
             justify-content: center;
             padding: 6px 12px;
-            /* 반투명한 유리 배경 */
             background-color: rgba(255, 255, 255, 0.03); 
-            /* 배경 흐림 효과로 고급스러움 극대화 */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            color: #cbd5e1; /* 부드러운 화이트/실버 */
+            color: #cbd5e1; 
             font-size: 14px; 
             font-weight: 500;
             border-radius: 7px; 
             cursor: pointer;
-            
-            /* CSS 변수 적용 */
             border: 1px solid var(--btn-border); 
-            
-            /* 크기는 변하지 않으면서 부드럽게 위치, 색상, 그림자만 변하는 고급 트랜지션 */
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
                         background-color 0.3s ease, 
                         color 0.3s ease, 
@@ -162,70 +150,100 @@
             white-space: nowrap;
         }
 
-        /* ★ 커스텀 브랜드 색상 유틸리티 클래스 (은은하고 고급스러운 자연스러운 금색 테두리 적용) */
-        /* 로고스 바이블 (금색 테두리 + 청색 호버 효과) */
-        .color-logos { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(59, 130, 246, 0.7); --btn-glow-shadow: rgba(59, 130, 246, 0.35); }
-        /* 에누리/다음 이펙트용 (금색 테두리 + 황색 호버 효과) */
-        .color-daum { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(250, 204, 21, 0.7); --btn-glow-shadow: rgba(250, 204, 21, 0.35); }
-        /* 유튜브 (금색 테두리 + 적색 호버 효과) */
-        .color-youtube { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(239, 68, 68, 0.7); --btn-glow-shadow: rgba(239, 68, 68, 0.35); }
-        /* 구글 (금색 테두리 + 백색 호버 효과) */
-        .color-google { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(156, 163, 175, 0.7); --btn-glow-shadow: rgba(156, 163, 175, 0.35); }
-        /* 네이버 (금색 테두리 + 녹색 호버 효과) */
-        .color-naver { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(34, 197, 94, 0.7); --btn-glow-shadow: rgba(34, 197, 94, 0.35); }
-        /* Auphonic (금색 테두리 + 루비 호버 효과) */
-        .color-auphonic { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(225, 29, 72, 0.7); --btn-glow-shadow: rgba(225, 29, 72, 0.35); }
-        /* Gemini (금색 테두리 + 하늘색 호버 효과) */
-        .color-gemini { --btn-border: rgba(212, 175, 55, 0.32); --btn-glow: rgba(0, 191, 255, 0.8); --btn-glow-shadow: rgba(0, 191, 255, 0.4); }
-        /* 새제천교회 (금색 테두리 + 연두색 호버 효과) */
-        .color-saejecheon { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(132, 204, 22, 0.7); --btn-glow-shadow: rgba(132, 204, 22, 0.35); }
-        /* 주민등록 (금색 테두리 + 주황색 호버 효과) */
-        .color-jumin { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(249, 115, 22, 0.7); --btn-glow-shadow: rgba(249, 115, 22, 0.35); }
+        /* ========================================================
+           브랜드별 고유 테두리 및 네온 글로우 컬러 시스템
+           ======================================================== */
+        /* 주품디자인: 앰버 코퍼 / 브론즈 골드 테두리 + 따뜻한 앰버 글로우 */
+        .color-jupum { 
+            --btn-border: rgba(245, 158, 11, 0.5); 
+            --btn-glow: rgba(245, 158, 11, 0.85); 
+            --btn-glow-shadow: rgba(245, 158, 11, 0.4); 
+        }
+        /* 로고스바이블: 사파이어 블루 테두리 + 비비드 블루 글로우 */
+        .color-logos { 
+            --btn-border: rgba(59, 130, 246, 0.45); 
+            --btn-glow: rgba(96, 165, 250, 0.85); 
+            --btn-glow-shadow: rgba(59, 130, 246, 0.4); 
+        }
+        /* 에누리: 밝은 레몬 옐로우 테두리 + 선샤인 옐로우 글로우 (주품디자인과 완벽 구분) */
+        .color-daum { 
+            --btn-border: rgba(253, 224, 71, 0.55); 
+            --btn-glow: rgba(250, 204, 21, 0.9); 
+            --btn-glow-shadow: rgba(250, 204, 21, 0.45); 
+        }
+        /* 유튜브: 시그니처 네온 레드 테두리 + 브라이트 레드 글로우 */
+        .color-youtube { 
+            --btn-border: rgba(239, 68, 68, 0.55); 
+            --btn-glow: rgba(248, 113, 113, 0.85); 
+            --btn-glow-shadow: rgba(239, 68, 68, 0.45); 
+        }
+        /* Auphonic: 일렉트릭 마젠타 / 네온 바이올렛 테두리 + 퍼플 핑크 글로우 (유튜브와 완벽 구분) */
+        .color-auphonic { 
+            --btn-border: rgba(168, 85, 247, 0.55); 
+            --btn-glow: rgba(217, 70, 239, 0.85); 
+            --btn-glow-shadow: rgba(168, 85, 247, 0.45); 
+        }
+        /* 구글: 쿨 실버 / 펄 화이트 테두리 + 백색 글로우 */
+        .color-google { 
+            --btn-border: rgba(226, 232, 240, 0.45); 
+            --btn-glow: rgba(255, 255, 255, 0.85); 
+            --btn-glow-shadow: rgba(255, 255, 255, 0.35); 
+        }
+        /* 네이버: 에메랄드 그린 테두리 + 네온 민트 글로우 */
+        .color-naver { 
+            --btn-border: rgba(34, 197, 94, 0.45); 
+            --btn-glow: rgba(74, 222, 128, 0.85); 
+            --btn-glow-shadow: rgba(34, 197, 94, 0.4); 
+        }
+        /* Gemini: 일렉트릭 시안 / 아쿠아 테두리 + 스카이 블루 글로우 */
+        .color-gemini { 
+            --btn-border: rgba(14, 165, 233, 0.5); 
+            --btn-glow: rgba(56, 189, 248, 0.85); 
+            --btn-glow-shadow: rgba(14, 165, 233, 0.4); 
+        }
+        /* 새제천교회: 스프링 라임 테두리 + 연두 글로우 */
+        .color-saejecheon { 
+            --btn-border: rgba(132, 204, 22, 0.45); 
+            --btn-glow: rgba(163, 230, 53, 0.85); 
+            --btn-glow-shadow: rgba(132, 204, 22, 0.4); 
+        }
+        /* 주민등록: 선셋 탠저린 오렌지 테두리 + 딥 오렌지 글로우 */
+        .color-jumin { 
+            --btn-border: rgba(249, 115, 22, 0.5); 
+            --btn-glow: rgba(251, 146, 60, 0.85); 
+            --btn-glow-shadow: rgba(249, 115, 22, 0.4); 
+        }
 
-        /* ★ 떨림 없는 프리미엄 호버 이펙트 (Glow & No Translate) */
+        /* 떨림 없는 프리미엄 호버 이펙트 */
         @media (hover: hover) {
             .link-btn:hover {
-                /* 배경 살짝 밝게 */
                 background-color: rgba(255, 255, 255, 0.1); 
-                /* 텍스트 퓨어 화이트로 쨍하게 */
                 color: #ffffff; 
-                
-                /* 호버 시 변수에 지정된 글로우 색상 사용 */
                 border-color: var(--btn-glow);
-                
-                /* 크기 및 위치 이동 배제 (정적 레이아웃 유지) */
                 transform: none; 
-                
-                /* 변수에 지정된 색상으로 유리 버튼 아래로 퍼지는 네온 글로우 그림자 */
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
                             0 0 15px var(--btn-glow-shadow);
                 z-index: 2; 
             }
         }
 
-        /* ========================================================
-           ★ 창 화면 분할 대응 (테블릿/노트북 중간 크기)
-           ======================================================== */
+        /* 테블릿/노트북 중간 크기 반응형 */
         @media (max-width: 1024px) {
             .column {
-                /* 공간이 좁아지면 2단 배열로 자동 전환 */
                 width: calc((100% - 25px) / 2);
             }
             .column:last-child {
-                /* 마지막 세 번째 열은 전체 너비 사용 */
                 width: 100%; 
                 margin-top: 10px;
             }
         }
 
-        /* ========================================================
-           ★ 모바일 전용 환경 (다크 스페이스 테마 연장)
-           ======================================================== */
+        /* 모바일 전용 환경 */
         @media (max-width: 768px) {
             body {
                 padding: 0;
                 align-items: flex-start; 
-                background: #0f172a !important; /* 모바일 배경을 심리스한 다크로 통일 */
+                background: #0f172a !important; 
             }
 
             .slide-container {
@@ -248,7 +266,7 @@
                 -webkit-backdrop-filter: blur(12px);
                 box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                justify-content: center; /* 타이틀 중앙 정렬 */
+                justify-content: center; 
             }
 
             .bookmark-grid {
@@ -260,19 +278,19 @@
             }
 
             .column {
-                width: 100%; /* 모바일에서는 1단 배열 */
+                width: 100%; 
                 gap: 24px; 
                 margin-top: 0;
             }
 
             .links-wrapper {
-                gap: 12px 10px; /* 모바일 터치 편의성을 위해 버튼 간격 확대 */
+                gap: 12px 10px; 
             }
 
             .link-btn {
                 padding: 8px 14px; 
                 font-size: 14.5px; 
-                background-color: rgba(255, 255, 255, 0.05); /* 모바일에서는 살짝 더 밝게 */
+                background-color: rgba(255, 255, 255, 0.05); 
             }
         }
     </style>
@@ -286,13 +304,13 @@
             <h1 class="header-title">IK BOOKMA<span onclick="window.open('https://koindori-en.github.io/gems/', '_self')" style="cursor: pointer; color: inherit; user-select: none;">R</span>K</h1>
         </div>
 
-        <!-- 내부 투명 미니멀 테이블 영역 -->
+        <!-- 내부 테이블 영역 -->
         <div class="bookmark-grid">
             
             <!-- Column 1 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">디자인 및 영상</h2>
+                    <h2 class="cat-title">CREATIVE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://2colors.colorion.co/', '_blank')">Two Color</div>
                         <div class="link-btn" onclick="window.open('https://color.adobe.com/ko/', '_blank')">Adobe Color</div>
@@ -308,21 +326,19 @@
                         <div class="link-btn" onclick="window.open('https://vfx.productioncrate.com/', '_blank')">Footage Create</div>
                         <div class="link-btn" onclick="window.open('https://app.immersity.ai/', '_blank')">Leia Pix</div>
                         <div class="link-btn" onclick="window.open('https://www.motionvfx.com/', '_blank')">Motionvfx</div>
-                        <!-- 모빈 -> mobbin 변경 완료 -->
                         <div class="link-btn" onclick="window.open('https://mobbin.com/', '_blank')">mobbin</div>
-                        <!-- 주품디자인 이동 됨 -->
-                        <div class="link-btn" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
+                        <!-- 주품디자인: 앰버 브론즈 테두리 & 글로우 적용 -->
+                        <div class="link-btn color-jupum" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
                     </div>
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">금융 및 행정</h2>
+                    <h2 class="cat-title">PUBLIC</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.shinhan.com/index.jsp', '_blank')">신한은행</div>
                         <div class="link-btn" onclick="window.open('https://www.kbstar.com/', '_blank')">국민은행</div>
                         <div class="link-btn" onclick="window.open('https://www.nhbank.com/', '_blank')">농협은행</div>
                         <div class="link-btn" onclick="window.open('https://efamily.scourt.go.kr/index.jsp', '_blank')">가족관계</div>
-                        <!-- 적용: 주민등록 (금색 테두리 + 주황 호버) -->
                         <div class="link-btn color-jumin" onclick="window.open('https://plus.gov.kr/', '_blank')">주민등록</div>
                         <div class="link-btn" onclick="window.open('https://www.korail.com/intro', '_blank')">코레일</div>
                         <div class="link-btn" onclick="window.open('https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml', '_blank')">홈텍스</div>
@@ -330,9 +346,8 @@
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">AI 플랫폼</h2>
+                    <h2 class="cat-title">AI PLATFORMS</h2>
                     <div class="links-wrapper">
-                        <!-- 적용: Gemini (금색 테두리 + 하늘색 호버) -->
                         <div class="link-btn color-gemini" onclick="window.open('https://gemini.google.com/app', '_blank')">Gemini</div>
                         <div class="link-btn" onclick="window.open('https://notebooklm.google.com/', '_blank')">Notebook LM</div>
                         <div class="link-btn" onclick="window.open('https://aistudio.google.com/prompts/new_chat', '_blank')">AI Studio</div>
@@ -347,14 +362,12 @@
             <!-- Column 2 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">기독교 및 성경</h2>
+                    <h2 class="cat-title">CHRISTIAN</h2>
                     <div class="links-wrapper">
-                        <!-- 적용: 로고스바이블 (금색 테두리 + 청색 호버) -->
                         <div class="link-btn color-logos" onclick="window.open('https://kr.logos.com/', '_blank')">로고스바이블</div>
                         <div class="link-btn" onclick="window.open('https://www.kidok.com/member/login.html?backUrl=/bbs/list.html?table=bbs_9', '_blank')">기독신문</div>
                         <div class="link-btn" onclick="window.open('http://www.holybible.or.kr/', '_blank')">홀리바이블</div>
                         <div class="link-btn" onclick="window.open('https://hangl.net/korbible', '_blank')">한글성경</div>
-                        <!-- 기존 '성경타자통독' 제거 및 '타르굼' 버튼 신설 적용 -->
                         <div class="link-btn" onclick="window.open('https://www.sefaria.org/', '_blank')">타르굼</div>
                         <div class="link-btn" onclick="window.open('http://www.iktinos.org/main/', '_blank')">신학정보원</div>
                         <div class="link-btn" onclick="window.open('https://www.csu.ac.kr/', '_blank')">대한성서공회</div>
@@ -365,21 +378,18 @@
                         <div class="link-btn" onclick="window.open('https://blog.naver.com/lovenor', '_blank')">PN4N</div>
                         <div class="link-btn" onclick="window.open('https://www.billmounce.com/biblicalgreek/track1', '_blank')">헬라어공부</div>
                         <div class="link-btn" onclick="window.open('https://sum.su.or.kr:8888/bible/today', '_blank')">매일성경</div>
-                        <!-- 충북동노회 추가됨 -->
                         <div class="link-btn" onclick="window.open('http://www.cbdong.co.kr/', '_blank')">충북동노회</div>
-                        <!-- 신규 추가: 씨앗교회, 리치교회 -->
                         <div class="link-btn" onclick="window.open('https://xn--9d0b456bbev81e.com/', '_blank')">씨앗교회</div>
                         <div class="link-btn" onclick="window.open('https://rich-church.joobo.kr/', '_blank')">리치교회</div>
                     </div>
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">쇼핑 및 커머스</h2>
+                    <h2 class="cat-title">COMMERCE</h2>
                     <div class="links-wrapper">
-                        <!-- 다음 버튼 (효과 없음) -->
                         <div class="link-btn" onclick="window.open('https://www.daum.net/', '_blank')">다음</div>
                         <div class="link-btn" onclick="window.open('https://www.nate.com/', '_blank')">네이트</div>
-                        <!-- 적용: 에누리 (금색 테두리 + 황색 호버) -->
+                        <!-- 에누리: 레몬 옐로우 테두리 & 글로우 적용 -->
                         <div class="link-btn color-daum" onclick="window.open('https://www.enuri.com/', '_blank')">에누리</div>
                         <div class="link-btn" onclick="window.open('https://ko.aliexpress.com/', '_blank')">알리</div>
                         <div class="link-btn" onclick="window.open('https://www.amazon.com/', '_blank')">아마존</div>
@@ -389,23 +399,19 @@
                         <div class="link-btn" onclick="window.open('https://www.halfclub.com/home', '_blank')">하프클럽</div>
                         <div class="link-btn" onclick="window.open('https://www.11st.co.kr/', '_blank')">11번가</div>
                         <div class="link-btn" onclick="window.open('https://www.gmarket.co.kr/', '_blank')">지마켓</div>
-                        <!-- 신규 추가: 뿌리오 -->
                         <div class="link-btn" onclick="window.open('https://www.ppurio.com/', '_blank')">뿌리오</div>
-                        <!-- 깃허브 및 PDF 추가됨 -->
                         <div class="link-btn" onclick="window.open('https://github.com/', '_blank')">깃허브</div>
                         <div class="link-btn" onclick="window.open('https://www.ilovepdf.com/ko/pdf_to_jpg', '_blank')">PDF</div>
                     </div>
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">개인 접속</h2>
+                    <h2 class="cat-title">WORKSPACE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('http://192.168.0.10/', '_blank')">CCTV</div>
                         <div class="link-btn" onclick="window.open('https://192.168.0.43/', '_blank')">BeeStation</div>
                         <div class="link-btn" onclick="window.open('https://wfree.dimode.co.kr/saejecheon', '_blank')">디모데 SJC</div>
-                        <!-- 적용: 새제천교회 (금색 테두리 + 연두 호버) -->
                         <div class="link-btn color-saejecheon" onclick="window.open('https://saejecheon.com/bbs/login.php?url=https://saejecheon.com/bbs/board.php?bo_table=gallery', '_blank')">새제천교회</div>
-                        <!-- PROFILE 링크 수정 및 대문자화 완료 -->
                         <div class="link-btn" onclick="window.open('https://koindori-en.github.io/profile/', '_blank')">PROFILE</div>
                     </div>
                 </div>
@@ -414,11 +420,10 @@
             <!-- Column 3 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">미디어의 세계</h2>
+                    <h2 class="cat-title">ENTERTAINMENT</h2>
                     <div class="links-wrapper">
-                        <!-- 넥플릭스 -> NETFLIX 변경 완료 -->
                         <div class="link-btn" onclick="window.open('https://www.netflix.com/kr/', '_blank')">NETFLIX</div>
-                        <!-- 적용: 유튜브 (금색 테두리 + 적색 호버) -->
+                        <!-- 유튜브: 네온 레드 테두리 & 글로우 적용 -->
                         <div class="link-btn color-youtube" onclick="window.open('https://www.youtube.com/', '_blank')">유튜브</div>
                         <div class="link-btn" onclick="window.open('https://cgv.co.kr/', '_blank')">CGV</div>
                         <div class="link-btn" onclick="window.open('https://www.dtryx.com/main.do?cgid=FE8EF4D2-F22D-4802-A39A-D58F23A29C1E', '_blank')">제천시네마</div>
@@ -431,16 +436,15 @@
                         <div class="link-btn" onclick="window.open('https://bestcommentaries.com/', '_blank')">주석랭킹</div>
                         <div class="link-btn" onclick="window.open('https://ko.khanacademy.org/', '_blank')">Khan</div>
                         <div class="link-btn" onclick="window.open('https://www.gmarket.co.kr/', '_blank')">미리캔버스</div>
-                        <!-- 이동된 항목들 -->
                         <div class="link-btn" onclick="window.open('https://studio.youtube.com/channel/UC3t-zvb811lELTjG2COO1Bw/music', '_blank')">오디오 도서관</div>
                         <div class="link-btn" onclick="window.open('https://freesound.org/', '_blank')">프리사운드</div>
+                        <!-- Auphonic: 일렉트릭 바이올렛 / 마젠타 테두리 & 글로우 적용 -->
                         <div class="link-btn color-auphonic" onclick="window.open('https://auphonic.com/account/login/?next=/engine/', '_blank')">Auphonic</div>
                     </div>
                 </div>
 
-                <!-- 구글과 네이버를 하나로 통합한 '포털 및 검색' 카테고리 -->
                 <div class="category-box">
-                    <h2 class="cat-title">포털 및 검색</h2>
+                    <h2 class="cat-title">PORTAL</h2>
                     <div class="links-wrapper">
                         <!-- 구글 관련 링크 -->
                         <div class="link-btn color-google" onclick="window.open('https://www.google.com/', '_blank')">구글</div>
